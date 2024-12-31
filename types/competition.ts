@@ -9,4 +9,5 @@ export type Competition = {
   type: "Vor Ort" | "Einsendung" | "Einsendung + Vor Ort Teilnahme";
   regionLimitation: "Deutschland" | "DACH" | "Europa" | "keine";
   styles: string[];
+  unknownDate: boolean;
 };

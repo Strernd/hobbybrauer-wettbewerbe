@@ -12,7 +12,7 @@ export function CompetitionCard({ competition }: { competition: Competition }) {
             {competition.title}
           </CardTitle>
           <span className="text-base font-semibold text-primary ml-2">
-            {competition.date}
+            {competition.unknownDate ? "tba" : competition.date}
           </span>
         </div>
       </CardHeader>

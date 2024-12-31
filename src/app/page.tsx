@@ -1,9 +1,14 @@
-"use client";
-
-import { useState } from "react";
 import { CompetitionCard } from "@/components/competition-card";
 import { Competition } from "../../types/competition";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Liste der Hobbybrau-Wettbewerbe in Deutschland",
+  description:
+    "Eine Übersicht von Hobbybrau-Wettbewerben in Deutschland und Europa. Finde heraus, wann und wo du deine Biere einreichen kannst.",
+};
 
 const competitions: Competition[] = [
   {
@@ -22,6 +27,7 @@ const competitions: Competition[] = [
       "Gose",
       "Super Heroes (BJCP wahlfrei)",
     ],
+    unknownDate: false,
   },
   {
     id: "2",
@@ -34,6 +40,7 @@ const competitions: Competition[] = [
     type: "Einsendung + Vor Ort Teilnahme",
     regionLimitation: "Deutschland",
     styles: ["Italian Style Pilsner"],
+    unknownDate: false,
   },
   {
     id: "3",
@@ -46,6 +53,46 @@ const competitions: Competition[] = [
     type: "Einsendung + Vor Ort Teilnahme",
     regionLimitation: "Deutschland",
     styles: ["In Abstimmung"],
+    unknownDate: false,
+  },
+  {
+    id: "4",
+    title: "HHBT VHD Bierprämierung",
+    date: "11.09.2025",
+    registrationDeadline: "tba",
+    submissionDeadline: "tba",
+    organizer: "Vereinigung der Haus- und Hobbybrauer in Deutschland e. V.",
+    link: "https://www.hausgebraut.de/haus-hobbybrautage/bierpraemierung",
+    type: "Vor Ort",
+    regionLimitation: "Deutschland",
+    styles: ["tba"],
+    unknownDate: false,
+  },
+  {
+    id: "5",
+    title: "Braumarkt Challenge",
+    date: "31.12.2025",
+    registrationDeadline: "tba",
+    submissionDeadline: "tba",
+    organizer: "Braumarkt",
+    link: "https://braumarkt.com/de",
+    type: "Einsendung",
+    regionLimitation: "Europa",
+    styles: ["tba"],
+    unknownDate: true,
+  },
+  {
+    id: "6",
+    title: "BestBrewChallenge",
+    date: "31.12.2025",
+    registrationDeadline: "tba",
+    submissionDeadline: "tba",
+    organizer: "Bestmalz / Palatia Malz GmbH",
+    link: "https://bestbrewchallenge.com/de/ueber-die-bbc/",
+    type: "Einsendung",
+    regionLimitation: "keine",
+    styles: ["tba"],
+    unknownDate: true,
   },
 ];
 
@@ -64,18 +111,13 @@ export default function WettbewerbeSeite() {
   const years = Object.keys(competitionsByYear).sort(
     (a, b) => Number(b) - Number(a)
   );
-  const [selectedYear, setSelectedYear] = useState(years[0]);
 
   return (
     <div className="container mx-auto py-8 px-4 flex flex-col items-center">
       <h1 className="text-3xl font-bold mb-6">
-        Heimbrau-Wettbewerbe Übersicht
+        Hobbybrauer-Wettbewerbe Übersicht
       </h1>
-      <Tabs
-        defaultValue={selectedYear}
-        className="w-full max-w-3xl"
-        onValueChange={(value) => setSelectedYear(value)}
-      >
+      <Tabs className="w-full max-w-3xl" defaultValue="2025">
         <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4">
           {years.map((year) => (
             <TabsTrigger key={year} value={year}>
@@ -104,7 +146,16 @@ export default function WettbewerbeSeite() {
       </Tabs>
       <p className="text-sm text-gray-600 mt-6">
         Alle Angaben ohne Gewähr. Falsche Informationen oder neue Wettbewerbe
-        bitte an <span className="font-bold">info@hopload.de</span> melden.
+        bitte an <span className="font-bold">info@hopload.de</span> melden, oder
+        als Pull Request{" "}
+        <Link
+          className="text-blue-600 hover:underline"
+          href="https://github.com/Strernd/hobbybrauer-wettbewerbe"
+          target="_blank"
+        >
+          hier
+        </Link>{" "}
+        einreichen.
       </p>
     </div>
   );

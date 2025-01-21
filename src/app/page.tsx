@@ -1,8 +1,8 @@
 import { CompetitionCard } from "@/components/competition-card";
-import { Competition } from "../../types/competition";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Metadata } from "next";
 import Link from "next/link";
+import { Competition } from "../../types/competition";
 
 export const metadata: Metadata = {
   title: "Liste der Hobbybrau-Wettbewerbe in Deutschland",
@@ -84,15 +84,15 @@ const competitions: Competition[] = [
   {
     id: "6",
     title: "BestBrewChallenge",
-    date: "31.12.2025",
-    registrationDeadline: "tba",
-    submissionDeadline: "tba",
+    date: "28.03.2025",
+    registrationDeadline: "27.03.2025",
+    submissionDeadline: "30.05.2025",
     organizer: "Bestmalz / Palatia Malz GmbH",
     link: "https://bestbrewchallenge.com/de/ueber-die-bbc/",
     type: "Einsendung",
     regionLimitation: "keine",
-    styles: ["tba"],
-    unknownDate: true,
+    styles: ["Oatmeal Stout"],
+    unknownDate: false,
   },
 ];
 

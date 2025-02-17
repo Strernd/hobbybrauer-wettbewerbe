@@ -52,7 +52,7 @@ const competitions: Competition[] = [
     link: "https://www.hobbybrauer-meisterschaft.de/",
     type: "Einsendung + Vor Ort Teilnahme",
     regionLimitation: "Deutschland",
-    styles: ["In Abstimmung"],
+    styles: ["Altbier"],
     unknownDate: false,
   },
   {
